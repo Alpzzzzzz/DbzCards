@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient as Http } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Characters } from './servicio.type';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +11,11 @@ export class ServicioService {
 
   constructor(private http: Http) { }
 
-  getCharacters(): Observable<Characters[]> {
-    return this.http.get<Characters[]>(`${this.baseURL}`);
+  getCharacters(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseURL}`);
   }
 
-  getCharacter(id: number): Observable<Characters[]> {
-    return this.http.get<Characters[]>(`${this.baseURL}/${id}`);
+  getCharacter(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseURL}/${id}`);
   }
 }
