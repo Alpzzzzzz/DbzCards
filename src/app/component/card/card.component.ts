@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
 
 @Component({
@@ -14,4 +14,15 @@ export class CardComponent {
   @Input() ki!: string;
   @Input() maxKi!: string;
   @Input() race!: string;
+  @Output() cardClicked = new EventEmitter<number>();
+  @Output() starClicked = new EventEmitter<{name: string, id: number}>();
+
+  onClickCard(id:number): any {
+    this.cardClicked.emit(id);
+  }
+
+  onClickStar(event: MouseEvent): void {
+    event.stopPropagation;
+    this.starClicked.emit({name: this.name, id: this.id});
+  }
 }
