@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ServicioService } from './servicio.service';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CardComponent } from "./component/card/card.component";
+import { ModalComponent } from './component/modal/modal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, CardComponent, NgFor],
+  imports: [CommonModule, CardComponent, ModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [ServicioService]
 })
 export class AppComponent implements OnInit {
-  title = 'Cards DBZ';
 
   data: any;
 
@@ -23,14 +22,27 @@ export class AppComponent implements OnInit {
     this.loadData();
   }
 
+  modalVisible: boolean = false;
 
-  // FALTA VALIDAR
+  // FALTA VALIDAR QUE SI NO TRAE DATOS ALMACENE ALGO VACIO
 
   loadData(): void {
     this.request.getCharacters().subscribe((elements: any) => {
       this.data = elements.items;
-      console.log(this.data);
     })
+  }
 
+  cardClicked(idCardClicked: number): any {
+    console.log("clickeaste: ", idCardClicked);
+  }
+
+  starClicked(idCharacterClicked: number, nameCharacterClicked: string): any {
+    this.modalVisible = true;
+    console.log("Modal abierto con name: ", nameCharacterClicked);
+    console.log("Modal abierto con id: ", idCharacterClicked)
+  }
+
+  cerrarModal(): void{
+    this.modalVisible = false;
   }
 }
