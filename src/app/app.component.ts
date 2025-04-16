@@ -33,13 +33,30 @@ export class AppComponent implements OnInit {
   }
 
   cardClicked(idCardClicked: number): any {
-    console.log("clickeaste: ", idCardClicked);
+    //console.log("clickeaste: ", idCardClicked);
   }
 
+  public idCharacterClicked!: number;
+  public nameCharacterClicked!: string;
+
   starClicked(idCharacterClicked: number, nameCharacterClicked: string): any {
+    this.idCharacterClicked = idCharacterClicked;
+    this.nameCharacterClicked = nameCharacterClicked;
     this.modalVisible = true;
-    console.log("Modal abierto con name: ", nameCharacterClicked);
-    console.log("Modal abierto con id: ", idCharacterClicked)
+  }
+
+  idSelectedCharacterArray: number[] = [];
+
+  pushSelectedCharacter(id:number){
+    if (this.idSelectedCharacterArray.length !== 0){
+       if (!this.idSelectedCharacterArray.find((idArray) => idArray === id)) {
+          this.idSelectedCharacterArray.push(id);
+          console.log("IDS favoritos", this.idSelectedCharacterArray);
+      }
+    } else {
+      this.idSelectedCharacterArray.push(id);
+      console.log("xd");
+    }
   }
 
   cerrarModal(): void{
