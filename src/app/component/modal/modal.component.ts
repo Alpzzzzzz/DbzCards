@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { publicDecrypt } from 'crypto';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -9,5 +8,11 @@ import { publicDecrypt } from 'crypto';
 })
 export class ModalComponent {
   @Input() nameCharacter!: string;
-  @Input() idCharacter!: string;
+  @Input() idCharacter!: number;
+
+  @Output() characterSelectedId = new EventEmitter<number>();
+
+  pushCharacter(): void{
+    this.characterSelectedId.emit(this.idCharacter);
+  }
 }

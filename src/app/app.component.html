@@ -8,7 +8,6 @@
                 [ki]="personaje.ki" 
                 [maxKi]="personaje.maxKi"
                 [race]="personaje.race" 
-                (cardClicked)="cardClicked($event)"
                 (starClicked)="starClicked($event.id, $event.name)"
             />
         </div>
@@ -16,6 +15,10 @@
 
       <!-- Modal -->
   <div class="modal-backdrop" *ngIf="modalVisible" (click)="cerrarModal()">
-    <app-modal />
+    <app-modal 
+        [idCharacter]="idCharacterClicked"
+        [nameCharacter]="nameCharacterClicked"
+        (characterSelectedId)="pushSelectedCharacter($event)"
+    />
   </div>
 </main>
