@@ -1,20 +1,12 @@
-.grid-container {
-    padding-top: 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 35px;
-}
-
-main {
-    min-height: 100vh;
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: #313131;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);
-    background-size: 30px 30px;
-    background-position: -5px -5px;
-    display: flex;         /* opcional, si querés centrar contenido */
-    flex-direction: column;
+.top-bar {
+    background-color: #242121; /* gris claro */
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* sombra sutil opcional */
   }
   
-      
+  .top-bar h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #c8bebe;
+  }

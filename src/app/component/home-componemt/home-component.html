@@ -1,4 +1,5 @@
-<main>
+
+<div class="main">
     <div class="grid-container">
         <div *ngFor="let personaje of data" class="card-wrapper">
             <app-card
@@ -8,21 +9,28 @@
                 [ki]="personaje.ki" 
                 [maxKi]="personaje.maxKi"
                 [race]="personaje.race" 
-                [isAdded]="isAdded"
                 (starClicked)="starClicked($event.id, $event.name)"
             />
         </div>
     </div>
-
-      <!-- Modal -->
-  <div class="modal-backdrop" *ngIf="modalVisible" (click)="cerrarModal()">
+    
+        <!-- Modal -->
+    <div class="modal-backdrop" *ngIf="modalVisible" (click)="cerrarModal()">
     <app-modal 
         [idCharacter]="idCharacterClicked"
         [nameCharacter]="nameCharacterClicked"
         [isAdded]="isAdded"
         (characterSelectedId)="pushSelectedCharacter($event)"
     />
-  </div>
+    </div>
 
-  <router-outlet />
-</main>
+    <div class="pagination-controls">
+    <button (click)="previousPage()">
+        Anterior
+    </button>
+    <p>{{pageData}}</p>
+    <button (click)="nextPage()">
+        Siguiente
+    </button>
+    </div>  
+</div>

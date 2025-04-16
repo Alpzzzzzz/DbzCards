@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient as Http } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,13 +9,14 @@ export class ServicioService {
 
   private baseURL = "https://dragonball-api.com/api/characters"
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getCharacters(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseURL}`);
+  getCharacters(page: number, limit: number = 15) {
+    const params = new HttpParams().set('page',page.toString()).set('limit', limit.toString());
+    return this.http.get<any[]>(this.baseURL, { params });
   }
 
-  getCharacter(id: number): Observable<any[]> {
+  getCharacter(id: number) {
     return this.http.get<any[]>(`${this.baseURL}/${id}`);
   }
 }
