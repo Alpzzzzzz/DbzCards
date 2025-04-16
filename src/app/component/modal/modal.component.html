@@ -2,7 +2,7 @@
 	<div class="tool-box">
 		<button class="btn-close">×</button>
 	</div>
-	<p class="text-content">¿Quieres Agregar a {{ nameCharacter }}<br> como Favorito?</p>				
+	<p class="text-content">¿Quieres {{isAdded ? "Eliminar a" : "Agregar a"}} {{ nameCharacter }}<br> {{isAdded ? "de" : "como"}} Favorito?</p>				
     <div>
         <button class="Btn" (click)="pushCharacter()"> Si </button>
     </div>
