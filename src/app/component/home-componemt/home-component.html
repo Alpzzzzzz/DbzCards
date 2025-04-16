@@ -8,6 +8,7 @@
                 [ki]="personaje.ki" 
                 [maxKi]="personaje.maxKi"
                 [race]="personaje.race" 
+                [isAdded]="isAdded"
                 (starClicked)="starClicked($event.id, $event.name)"
             />
         </div>
@@ -18,6 +19,7 @@
     <app-modal 
         [idCharacter]="idCharacterClicked"
         [nameCharacter]="nameCharacterClicked"
+        [isAdded]="isAdded"
         (characterSelectedId)="pushSelectedCharacter($event)"
     />
   </div>

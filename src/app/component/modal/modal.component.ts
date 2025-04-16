@@ -9,6 +9,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ModalComponent {
   @Input() nameCharacter!: string;
   @Input() idCharacter!: number;
+  @Input() isAdded!: boolean;
 
   @Output() characterSelectedId = new EventEmitter<number>();
 

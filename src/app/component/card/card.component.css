@@ -99,8 +99,6 @@
 
 
 /* ESTRELLA*/
-
-/* From Uiverse.io by SelfMadeSystem */ 
 .rating {
     position:absolute;
     z-index: 5;
@@ -131,12 +129,6 @@
     transition: stroke 0.2s, fill 0.5s;
   }
   
-  @keyframes idle {
-    from {
-      stroke-dashoffset: 24;
-    }
-  }
-  
   .rating label:hover svg {
     stroke: var(--fill);
   }
@@ -146,8 +138,8 @@
     top: 8px;
     right: 8px;
     z-index: 10;
-  }  
-  
+  }
+   
   .rating input:checked ~ label svg {
     transition: 0s;
     animation: idle 4s linear infinite, yippee 0.75s backwards;
