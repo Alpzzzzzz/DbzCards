@@ -11,7 +11,6 @@ import { ServicioService } from '../../servicio.service';
     CommonModule,
     CardComponent,
     ModalComponent,
-    RouterOutlet
   ],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css',
@@ -21,37 +20,58 @@ import { ServicioService } from '../../servicio.service';
 })
 export class HomeComponent implements OnInit {
   data: any;
+  pageData: number = 1;
+  limitData: number = 15;
   idCharacterClicked!: number;
   nameCharacterClicked!: string;
   idSelectedCharacterArray: number[] = [];
   isAdded: any = false;
+  isDisabled: boolean = false;
 
 
   constructor(private request: ServicioService) { }
 
   ngOnInit(): void {
-    this.loadData();
+    this.loadData(this.pageData);
   }
 
   modalVisible: boolean = false;
 
-  // FALTA VALIDAR QUE SI NO TRAE DATOS ALMACENE ALGO VACIO
-
-  loadData(): void {
-    this.request.getCharacters().subscribe((elements: any) => {
-      this.data = elements.items;
+  
+  // TRAE LOS DATOS SEGUN EN LA PAGINA EN LA QUE SE ENCUENTRA
+  loadData(page: number): void {
+    this.request.getCharacters(page, this.limitData).subscribe((elements: any) => {
+      if (elements.items.length === 13){
+        this.isDisabled = true;
+      }
+      if (elements && elements.items && elements.items.length > 0) {
+        this.data = elements.items;
+      } else {
+        this.data = [];
+        this.isDisabled = true
+      }
     })
   }
 
-  cardClicked(idCardClicked: number): any {
-    //console.log("clickeaste: ", idCardClicked);
+  nextPage() {
+    if (!this.isDisabled){
+      this.pageData++;
+      this.loadData(this.pageData)
+    }
+  }
+
+  previousPage() {
+    if (this.pageData > 1) {
+      this.pageData--;
+      this.loadData(this.pageData - 1);
+    }
   }
 
   // VERIFICA SI EXISTE EL ID DEL PERSONAJE EN LA LISTA DE IDS PERSONAJES FAVORITOS
   checkIfIdExists(id:number): boolean {
     return this.idSelectedCharacterArray.includes(id);
   }
-  
+
   // SE EJECUTA CUANDO SE PRESIONA LA ESTRELLA Y GUARDA EL ID DEL PERSONAJE SELECCIONADO
   starClicked(idCharacterClicked: number, nameCharacterClicked: string): any {
     this.isAdded = this.checkIfIdExists(idCharacterClicked);
@@ -74,4 +94,4 @@ export class HomeComponent implements OnInit {
   cerrarModal(): void{
     this.modalVisible = false;
   }
-}
+ }
