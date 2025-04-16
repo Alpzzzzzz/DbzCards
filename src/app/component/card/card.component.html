@@ -11,6 +11,7 @@
           Ki Base: {{ ki || "0"}}<br />
           Ki Máximo: {{ maxKi || "0" }}
         </p>
+        <a [routerLink]="['details-character/', id]">Detalles</a>
         <!-- Estrella --> 
         <div class="rating" (click)="onClickStar($event)">
             <input type="radio" id="star-{{ id }}" name="star-radio" value="{{id}}">
