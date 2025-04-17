@@ -4,7 +4,6 @@ import { CardComponent } from '../card/card.component';
 import { ModalComponent } from '../modal/modal.component';
 import { ServicioService } from '../../servicio.service';
 import { FormsModule } from '@angular/forms';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-home-component',
@@ -47,7 +46,6 @@ export class HomeComponent implements OnInit {
       this.request.searchCharacters(page, this.limitData, this.name.trim()).subscribe((element: any) => {
           if (element.length > 0) {
             this.data = element;
-            this.pageData = 1;
           } else {
             this.data = [];
           }
@@ -67,21 +65,20 @@ export class HomeComponent implements OnInit {
   nextPage() {
     if (!this.isDisabled){
       this.pageData++;
-      this.loadData(this.pageData)
+      this.loadData(this.pageData);
     }
   }
 
   previousPage() {
     if (this.pageData > 1) {
       this.pageData--;
-      this.loadData(this.pageData - 1);
+      this.loadData(this.pageData);
     }
   }
 
   onInputChange(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.name = filterValue;
-    this.loadData(this.pageData);
   }
 
   // VERIFICA SI EXISTE EL ID DEL PERSONAJE EN LA LISTA DE IDS PERSONAJES FAVORITOS
