@@ -1,3 +1,45 @@
+/* From Uiverse.io by alexruix */ 
+.components {
+  margin-top: 3rem;
+  margin-left: 6rem;
+}
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  width: 35%;          /* ocupa todo el ancho disponible */
+  max-width: none;      /* elimina el límite de 190px */
+  justify-content: flex-start;
+}
+
+.input {
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  width: 100%;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  outline: none;
+  background-color: #413b3b;
+  color: #ffffff;
+  box-shadow: 0 0 2px #C1D9BF, 0 0 0 1px #f5f5f5eb;
+  transition: .3s ease;
+}
+
+.input::placeholder {
+  color: #f8f4f4;
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: #ffffff;
+  width: 1rem;
+  height: 1rem;
+}
+
 .grid-container {
     padding: 5%;
     display: grid;

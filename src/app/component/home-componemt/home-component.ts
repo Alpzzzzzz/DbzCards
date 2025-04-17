@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { ModalComponent } from '../modal/modal.component';
-import { RouterOutlet } from '@angular/router';
 import { ServicioService } from '../../servicio.service';
+import { FormsModule } from '@angular/forms';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-home-component',
@@ -11,6 +12,7 @@ import { ServicioService } from '../../servicio.service';
     CommonModule,
     CardComponent,
     ModalComponent,
+    FormsModule
   ],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css',
@@ -21,7 +23,8 @@ import { ServicioService } from '../../servicio.service';
 export class HomeComponent implements OnInit {
   data: any;
   pageData: number = 1;
-  limitData: number = 15;
+  limitData: number = 14;
+  name: string = '';
   idCharacterClicked!: number;
   nameCharacterClicked!: string;
   idSelectedCharacterArray: number[] = [];
@@ -40,17 +43,21 @@ export class HomeComponent implements OnInit {
   
   // TRAE LOS DATOS SEGUN EN LA PAGINA EN LA QUE SE ENCUENTRA
   loadData(page: number): void {
-    this.request.getCharacters(page, this.limitData).subscribe((elements: any) => {
-      if (elements.items.length === 13){
-        this.isDisabled = true;
-      }
-      if (elements && elements.items && elements.items.length > 0) {
-        this.data = elements.items;
-      } else {
-        this.data = [];
-        this.isDisabled = true
-      }
-    })
+    if (this.name.trim()){
+      console.log("uwu");
+      this.request.searchCharacters(page, this.limitData, this.name.trim()).subscribe((e: any) => 
+        this.data = e
+      )
+    } else {
+      this.request.getCharacters(page, this.limitData).subscribe((elements: any) => {
+        if (elements && elements.items && elements.items.length > 0) {
+          this.data = elements.items;
+        } else {
+          this.data = [];
+          this.isDisabled = true
+        }
+      })
+    }
   }
 
   nextPage() {
@@ -65,6 +72,12 @@ export class HomeComponent implements OnInit {
       this.pageData--;
       this.loadData(this.pageData - 1);
     }
+  }
+
+  onInputChange(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.name = filterValue;
+    this.loadData(this.pageData);
   }
 
   // VERIFICA SI EXISTE EL ID DEL PERSONAJE EN LA LISTA DE IDS PERSONAJES FAVORITOS
