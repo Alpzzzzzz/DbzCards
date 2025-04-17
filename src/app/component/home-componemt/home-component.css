@@ -57,11 +57,13 @@
     flex-direction: column;
   }
 
+
   p {
-    color: rgb(146, 116, 116);
-    font-size: 15px;
+    color: #c8bebe;
+    font-size: 25px;
     font-weight: bold;
   }
+
   .pagination-controls {
     display: flex;
     justify-content: center; 
@@ -71,9 +73,9 @@
   }
   
 button {
-    color: rgb(146, 116, 116);
+    color: #c8bebe;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 25px;
     border: none;
     background: none;
     font-weight: 600;
