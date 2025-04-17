@@ -1,16 +1,10 @@
-<div class="card" [id]="id" (click)="onClickCard(id)">
+<div class="card" [id]="id">
     <div class="first-content">
       <img [src]="image" [alt]="name"/>
     </div>
     <div class="second-content">
       <div class="content-wrapper">
         <h3>{{ name }}</h3>
-        <h4>Descripción:</h4>
-        <p>
-          Raza: {{ race || "Desconocido" }}<br />
-          Ki Base: {{ ki || "0"}}<br />
-          Ki Máximo: {{ maxKi || "0" }}
-        </p>
         <a [routerLink]="['details-character/', id]">Detalles</a>
       </div>
     </div>

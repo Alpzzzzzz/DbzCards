@@ -17,24 +17,9 @@
                 [name]="personaje.name" 
                 [id]="personaje.id"
                 [image]="personaje.image"
-                [ki]="personaje.ki" 
-                [maxKi]="personaje.maxKi"
-                [race]="personaje.race" 
-                (starClicked)="starClicked($event.id, $event.name)"
             />
         </div>
     </div>
-    
-        <!-- Modal -->
-    <div class="modal-backdrop" *ngIf="modalVisible" (click)="cerrarModal()">
-    <app-modal 
-        [idCharacter]="idCharacterClicked"
-        [nameCharacter]="nameCharacterClicked"
-        [isAdded]="isAdded"
-        (characterSelectedId)="pushSelectedCharacter($event)"
-    />
-    </div>
-
     <div class="pagination-controls">
     <button (click)="previousPage()">
         Anterior
