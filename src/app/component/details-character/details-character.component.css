@@ -1,0 +1,110 @@
+.main-wrapper {
+  display: flex;
+  padding: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  gap: 16px;
+}
+
+/* CARD IZQUIERDA */
+.card-left {
+  background-color: #f7f7f7;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 350px;
+  padding: 16px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.card-left img {
+  width: 80%;
+  max-height: 100vh;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.info h1 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.info p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* TRANSFORMACIONES A LA DERECHA */
+.card-right {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.transformaciones-gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+  padding-top: 13px;
+}
+
+/* Estilo individual de imagen */
+.img-wrapper {
+  flex: 0 0 auto;
+  width: 14.7vw;
+  height: 70vh;
+  scroll-snap-align: start;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #f0f0f0;
+
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: top;
+}
+
+.grid-right {
+  display: grid;
+  gap: 10px;
+}
+
+.description-header {
+  background-color: #f0f0f0;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+}
+
+.description-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.description-content {
+  padding: 16px;
+  color: #555;
+  line-height: 1.5;
+}

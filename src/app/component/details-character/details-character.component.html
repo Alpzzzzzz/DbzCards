@@ -1,1 +1,39 @@
-<p>details-character works! {{ charactedId }}</p>
+<div class="main-wrapper">
+    <!-- CARD IZQUIERDA -->
+    <div class="card-left">
+      <img [src]="data?.image" [alt]="data?.name" />
+  
+      <div class="info">
+        <h1>{{ data?.name }}</h1>
+        <p>
+          Género: {{ data?.gender }} <br />
+          Ki Base: {{ data?.ki }} <br />
+          Ki Máximo: {{ data?.maxKi }}
+        </p>
+      </div>
+    </div>
+  
+    <!-- TRANSFORMACIONES A LA DERECHA -->
+
+    <div class="grid-right">
+        <div class="card-right">
+            <div class="description-header">
+                <h1>Descripcion del Personaje: {{ data?.name }}</h1>
+            </div>
+            <div class="description-content">
+                  <p> {{ data?.description }} </p>
+            </div>
+         </div>
+        <div class="card-right">
+            <div class="description-header">
+              <h2>Transformaciones</h2>
+            </div>
+          
+            <div class="transformaciones-gallery">
+              <div class="img-wrapper" *ngFor="let transformations of data?.transformations">
+                <img [src]="transformations?.image" [alt]="transformations?.name" />
+              </div>
+            </div>
+          </div>    
+    </div>
+     
